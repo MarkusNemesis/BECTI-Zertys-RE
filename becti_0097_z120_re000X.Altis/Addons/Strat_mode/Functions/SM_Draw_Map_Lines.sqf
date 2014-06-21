@@ -1,0 +1,7 @@
+_map=_this select 0;
+
+{
+		_x set [0 , objNull];
+	_x=_x-[objNull];
+	 _map drawLine _x ;
+}count (SHOWTOMAP select 2);
