@@ -1,0 +1,24 @@
+- High-end air as it stands should be pulled down in cost to near previous values x?
+- High-end arty to be reduced in cost to 30k, with medium arty range x?
+	- Mortar Ranges: Short: 3KM, Medium: 4KM x?
+	- SPG Ranges (Sochor, Scorcher): Short: 4KM, Medium: 6KM x?
+	- Mortar Ammo complement doubled (From 8 rounds to 16) x?
+- Darters reintroduced at gear 3. x?
+- Ambulances / Respawn Trucks to $1250 x?
+- View distance returned to 4000 x?
+- Passive Income Cycle: Returned to 45 secs x?
+- Black MX Rifles x?
+	- arifle_MXC_Black_F x?
+	- arifle_MX_Black_F x?
+	- arifle_MX_GL_Black_F x?
+	- arifle_MX_SW_Black_F x?
+	- arifle_MXM_Black_F x?
+- Fixing Tachud not displaying friendly players
+- A few exploit fixes (That shall remain unnamed) - Repair x?
+- Removing dymanic group sizes x?
+- Removing Zeus integration x?
+- Patrols enabled x?
+- Show upgrade countdown on upgrade menu + show currently running upgrade on HUD x?
+- Ambulance Range Upgrade: Base range of 200m, each upgrade (3) will give 100m further.
+- Commander has sent you $1000: Will fix so that it shows the actual persons name x?
+- AI skills re-factored to actually engage/suppress you more realisticly. x?

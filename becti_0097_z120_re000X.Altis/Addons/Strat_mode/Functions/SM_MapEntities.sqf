@@ -107,7 +107,7 @@ if ( (vehicle player) getVariable "AN_iNet" == _side_id) then {_ug=_ug-[player];
 			    default { "n_"  };
 			  };
 			_s_icon=0 call {
-	  		if (_x isKindOf "Man") exitWith { "inf" };
+				if (_x isKindOf "Man") exitWith { "inf" };
 				if ((_x isKindOf "Car" || _x isKindOf "Motorcycle") && !(_x isKindOf "Wheeled_APC_F")) exitWith { "motor_inf" };
 				if  (_x isKindOf "Wheeled_APC_F")exitWith { "mech_inf" };
 				if  (_x isKindOf "Ship")exitWith { "naval" };

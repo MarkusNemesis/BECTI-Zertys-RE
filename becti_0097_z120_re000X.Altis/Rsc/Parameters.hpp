@@ -9,7 +9,7 @@ class Params {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = 0; // Markus - Short
+		default = 1; // Markus - Short
 	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
@@ -33,7 +33,7 @@ class Params {
 		title = "INCOME: Delay";
 		values[] = {15,30,45,60,90,120,160,190};
 		texts[] = {"00:15 Minute","00:30 Minute","00:45 Minute","01:00 Minute","01:30 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes"};
-		default = 60;
+		default = 45;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = "INCOME: Starting Funds (East Commander)";
@@ -141,7 +141,7 @@ class Params {
 		title = "VISUAL: View Distance";
 		values[] = {1000,1500,2000,2500,3000,3500,4000,5000,6000};
 		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","5 KM", "6 KM"};
-		default = 6000; // 4000
+		default = 4000;
 	};
 	class CTI_WEATHER_FAST {
 		title = "WEATHER: Fast Time";
@@ -351,7 +351,7 @@ class Params {
 		title = "Zerty: Strategic: Patrols";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0; // 1
+		default = 1; // 1
 	};
 	class CTI_SM_REPAIR {
 		title = "Zerty: Strategic: Repair/Forcelock";

@@ -65,7 +65,7 @@ _marker_name setMarkerSizeLocal _marker_size;
 while {alive _target} do {
 	if ((_target getVariable "cti_net")== CTI_P_SideID) then {
 		_marker_name setMarkerPosLocal (visiblePosition _target);
-		[_target,_marker_l] call AN_Draw;
+		//[_target,_marker_name] call AN_Draw;
 		if !(( markerAlpha _marker_name) == 1) then {_marker_name setMarkerAlphaLocal 1;};
 	} else {
 		if !(( markerAlpha _marker_name) == 0) then {_marker_name setMarkerAlphaLocal 0;};

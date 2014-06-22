@@ -11,14 +11,15 @@ class Mission
 		"a3_characters_f_beta",
 		"A3_Characters_F_INDEP",
 		"A3_Modules_F_Curator_Curator",
-		"A3_Data_F_Curator_Virtual"
+		"A3_Data_F_Curator_Virtual",
+		"a3_characters_f"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_OPFOR",
+		"a3_characters_f",
 		"A3_Characters_F_BLUFOR",
 		"A3_Characters_F_Civil",
-		"a3_characters_f_beta",
 		"A3_Characters_F_INDEP",
 		"A3_Modules_F_Curator_Curator",
 		"A3_Structures_F_Mil_Flags",
@@ -27,7 +28,7 @@ class Mission
 	randomSeed=1713560;
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.2.0.0 RE 0002";
+		briefingName="BECTI BE 0.97 - Zerty 1.2.0.0 RE 0003";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		startWeather=0;
@@ -1244,7 +1245,7 @@ class Mission
 						items=4;
 						class Item0
 						{
-							value="#adminLogged";
+							value="";
 							parentCls="ModuleCurator_F";
 							typeName="Owner";
 						};

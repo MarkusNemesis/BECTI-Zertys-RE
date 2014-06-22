@@ -37,7 +37,13 @@ _level = _this select 2;
 
 _upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level;
 if (CTI_DEBUG) then {_upgrade_time =0};
-sleep _upgrade_time;
+//sleep _upgrade_time;
+private ['_uTime', '_rTime'];
+_uTime = time + _upgrade_time; // Markus - Time till the upgrade is completed
+_uTime call compile format ["RE_VAR_UPGRADECOUNTDOWN_%1 = _this; publicVariable 'RE_VAR_UPGRADECOUNTDOWN_%1';", _side];
+waitUntil {
+	_uTime < time
+};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;

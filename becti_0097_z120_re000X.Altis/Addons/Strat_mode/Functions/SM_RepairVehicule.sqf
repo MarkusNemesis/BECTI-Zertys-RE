@@ -18,10 +18,12 @@ SM_repair_vehicle={
 		_pos = getPos _caller;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
-
-			hint parseText  format ["<t size='1.3' color='#2394ef'>Damage %1</t>",(getDammage _target)] ;
-			sleep 1;
-			_target setDammage (getDammage _target) - 0.005;
+			hint "Repairing - This may take some time.";
+			sleep 25; // 1
+			if (alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller) then {
+				_target setDammage (getDammage _target) - 0.25; // 0.005
+				hint parseText format ["<t size='1.3' color='#2394ef'>Damage %1</t>",(getDammage _target)];
+			} else {hint "Failed";CTI_P_Repairing = false;};
 		};
 		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;};
 		hint "Done";

@@ -466,7 +466,7 @@ CTI_VEHICLES_SALVAGE_RATE = 0.2; //--- This coefficient determine the value of a
 CTI_VEHICLES_SALVAGE_RANGE = 25; //--- This is the distance required between a Wreck and Salvage Truck
 CTI_VEHICLES_SALVAGER_PRICE = 550; //--- Determine the cost of the salvage trucks
 // Markus - Balance - Price match OPFOR and BLUFOR arty
-CTI_VEHICLES_ARTY_PRICE = 100000;
+CTI_VEHICLES_ARTY_PRICE = 30000;
 
 //--- Vehicles: Parameter
 with missionNamespace do {

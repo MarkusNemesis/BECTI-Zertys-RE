@@ -218,4 +218,4 @@ if (CTI_WEATHER_FAST > 0) then { execFSM "Server\FSM\weather_fast.fsm" };
 	CTI_Init_Server=True;
 
 
-0 execVM "Addons\Zeus\Z_init_GUER.sqf";
+//0 execVM "Addons\Zeus\Z_init_GUER.sqf";

@@ -1,4 +1,6 @@
-
+private ['_cTime'];
+_cTime = time + (60 * 10);
+waitUntil {time > _cTime};
 SM_PATROLS=[];
 SM_MAX_PATROLS=0;
 SM_PATROL_RATIO=6;

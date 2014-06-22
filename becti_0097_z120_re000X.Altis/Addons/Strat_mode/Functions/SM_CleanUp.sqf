@@ -14,7 +14,7 @@ SM_CLEAN_GROUPS={
 	    	_g=group _x;
 	    	_players={isPlayer _x} count (units _g);
 	    	if (_players==0) then {
-	    		{ if !(vehicle _x == _x) then {deleteVehicle (vehicle _x); }; deleteVehicle _x;true } count (units _g)
+	    		{if !(vehicle _x == _x) then {deleteVehicle (vehicle _x); }; deleteVehicle _x; true} count (units _g);
 	    	};
 	    }count playableUnits;
 	    sleep 3;
