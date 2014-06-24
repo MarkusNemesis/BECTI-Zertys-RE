@@ -71,8 +71,8 @@ _c = _c		+ ["Motorized"];
 _s = _s		+ [[]];
 
 _v = _v		+ ["Mechanized"];
-_t = _t		+ ["Mechanized - APC"];
-_p = _p		+ [[["B_APC_Wheeled_01_cannon_F", 1], ["B_APC_Tracked_01_rcws_F", 1, 50]]];
+_t = _t		+ ["Mechanized - APC (Light)"];
+_p = _p		+ [[["B_APC_Wheeled_01_cannon_F", 1]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [2500];
 _c = _c		+ ["Mechanized"];

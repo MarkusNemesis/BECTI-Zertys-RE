@@ -209,14 +209,14 @@ class Params {
 		title = "Zerty: GROUPS: Size (AI) -- Resistance, West, East ";
 		values[] = {0,8,10,12,14,16};
 		texts[] = {"0","8","10","12","14","16"};
-		default = 14; // 8
+		default = 3; // 8
 	};
 
 	class CTI_PLAYERS_GROUPSIZE {
 		title = "Zerty: GROUPS: Size (Players)";
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {"0","1","2","3","4","5","8","10","12","14","16"};
-		default = 14;
+		default = 9;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = "Zerty: GAMEPLAY: Missile Range";

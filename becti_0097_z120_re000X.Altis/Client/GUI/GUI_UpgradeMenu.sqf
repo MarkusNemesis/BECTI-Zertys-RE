@@ -39,7 +39,7 @@ waitUntil {
 		//_last_running = _running;
 		_html = "";
 		if (_running > -1) then {
-			_html = format ["Running: <t color='#F5D363'>%1</t> Time Remaining: %2 second(s).", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0, call compile format ["floor(RE_VAR_UPGRADECOUNTDOWN_%1 - time)", CTI_P_SideJoined]];
+			_html = format ["Running: <t color='#F5D363'>%1</t> - Time Remaining: %2 second(s).", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0, call compile format ["floor(RE_VAR_UPGRADECOUNTDOWN_%1)", CTI_P_SideJoined]];
 		};
 		((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250009) ctrlSetStructuredText parseText _html;
 	//};

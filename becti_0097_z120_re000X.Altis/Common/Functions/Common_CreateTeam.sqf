@@ -21,6 +21,13 @@ _crews = [];
 {
 	if (_x isKindOf "Man") then {
 		_unit = [_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
+		// Markus - AI Skill redux
+		_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
+		_skill = _AISkill / 5;
+		_unit setSkill ["aimingAccuracy",_skill];
+		_unit setSkill ["aimingShake",_skill];
+		_unit setSkill ["aimingSpeed",_skill];
+		/// - Markus
 		[_created_units, _unit] call CTI_CO_FNC_ArrayPush;
 	} else {
 		_crew = switch (true) do {
@@ -35,25 +42,17 @@ _crews = [];
 		[_created_vehicles, _vehicle] call CTI_CO_FNC_ArrayPush;
 		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
 		_crews = _crews + _vehicle_crew;
+		{
+			_x setSkill ["aimingAccuracy",0.7];
+			_x setSkill ["aimingShake",0.7];
+			_x setSkill ["aimingSpeed",0.7];
+			_x setSkill ["spotDistance",100];
+			_x setSkill ["spotTime",100];
+			_x setSkill ["courage",100];
+			_x setSkill ["commanding",100];
+			_x setSkill ["endurance",100];
+		} foreach _crews;
 	};
-	// Markus - AI Skill redux
-	_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
-	_skill = _AISkill/10;
-	if (vehicle _x != _x) then { // Markus - Unit is in vehicle
-		_x setSkill ["aimingAccuracy",0.5];
-		_x setSkill ["aimingShake",0.5];
-		_x setSkill ["aimingSpeed",0.5];
-	} else {
-		_x setSkill ["aimingAccuracy",_skill];
-		_x setSkill ["aimingShake",_skill];
-		_x setSkill ["aimingSpeed",_skill];
-	};
-	_x setSkill ["spotDistance",100];
-	_x setSkill ["spotTime",100];
-	_x setSkill ["courage",100];
-	_x setSkill ["commanding",100];
-	_x setSkill ["endurance",100];
-	/// - Markus
 } forEach _units;
 
 {_group addVehicle _x} forEach _created_vehicles;

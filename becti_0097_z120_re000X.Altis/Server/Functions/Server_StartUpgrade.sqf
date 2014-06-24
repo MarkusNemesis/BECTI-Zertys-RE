@@ -38,10 +38,16 @@ _level = _this select 2;
 _upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level;
 if (CTI_DEBUG) then {_upgrade_time =0};
 //sleep _upgrade_time;
-private ['_uTime', '_rTime'];
-_uTime = time + _upgrade_time; // Markus - Time till the upgrade is completed
-_uTime call compile format ["RE_VAR_UPGRADECOUNTDOWN_%1 = _this; publicVariable 'RE_VAR_UPGRADECOUNTDOWN_%1';", _side];
+private ['_pTime','_rTime'];
+_pTime = floor time;
+// Markus - Time till the upgrade is completed
+_upgrade_time call compile format ["RE_VAR_UPGRADECOUNTDOWN_%1 = _this; publicVariable 'RE_VAR_UPGRADECOUNTDOWN_%1';", _side];
 waitUntil {
+	if ((floor time) > _pTime) then {
+		_pTime = floor time;
+		_upgrade_time = _upgrade_time - 1;
+		_upgrade_time call compile format ["RE_VAR_UPGRADECOUNTDOWN_%1 = _this; publicVariable 'RE_VAR_UPGRADECOUNTDOWN_%1';", _side];
+	};
 	_uTime < time
 };
 
