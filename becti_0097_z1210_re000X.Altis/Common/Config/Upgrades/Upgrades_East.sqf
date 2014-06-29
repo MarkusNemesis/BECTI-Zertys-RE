@@ -153,7 +153,7 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 _l=_l+			[["Respawn Truck: Range", "Increase the max range of the respawn truck. 500m + lvl x 500m "]];
 _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
-_lev=_lev+	[2];
+_lev=_lev+	[3];
 _lin=_lin+	[[[],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 /*

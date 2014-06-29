@@ -433,6 +433,30 @@ _i = _i		+ [["arifle_MXM_RCO_pointer_snds_F"]];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
+// Markus - MX Black variants
+
+_i = _i		+ ["arifle_MXC_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["arifle_MX_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["arifle_MX_GL_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["arifle_MX_SW_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["arifle_MXM_Black_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+/// - Markus
+
 _i = _i		+ ["arifle_SDAR_F"];
 _u = _u		+ [0];
 _p = _p		+ [20];
@@ -724,8 +748,8 @@ _u = _u		+ [1];
 _p = _p		+ [5];
 
 _i = _i		+ ["B_UAV_01_backpack_F"];
-_u = _u		+ [2];
-_p = _p		+ [250];
+_u = _u		+ [3];
+_p = _p		+ [1250];
 
 _i = _i		+ ["B_HMG_01_support_F"];
 _u = _u		+ [1];
@@ -991,8 +1015,8 @@ _u = _u		+ [0];
 _p = _p		+ [10];
 
 _i = _i		+ ["B_UavTerminal"];
-_u = _u		+ [1];
-_p = _p		+ [25];
+_u = _u		+ [3];
+_p = _p		+ [500];
 
 _i = _i		+ ["ItemMap"];
 _u = _u		+ [0];

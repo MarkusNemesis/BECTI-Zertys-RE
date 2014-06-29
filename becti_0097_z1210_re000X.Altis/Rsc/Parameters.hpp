@@ -9,7 +9,7 @@ class Params {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
 		texts[] = {"Disabled","Ballistic Computer","Short","Medium","Long","Extreme"};
-		default = -1;
+		default = 1; // Markus - Medium
 	};
 	class CTI_BASE_HQ_REPAIR {
 		title = "BASE: HQ Repairable";
@@ -45,7 +45,7 @@ class Params {
 		title = "INCOME: Starting Funds (East Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000};
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
-		default = 2400;
+		default = 3200; // 2400
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER {
 		title = "INCOME: Starting Funds (West Commander)";
@@ -57,7 +57,7 @@ class Params {
 		title = "INCOME: Starting Funds (West Players)";
 		values[] = {900,1500,2400,3200,6000,8000,10000,12500,15000,20000};
 		texts[] = {"$900","$1500","$2400","$3200","$6000","$8000","$10000","$12500","$15000","$20000"};
-		default = 2400;
+		default = 3200; // 2400
 	};
 	class CTI_ECONOMY_TOWNS_OCCUPATION {
 		title = "INCOME: Towns Occupation";
@@ -123,7 +123,7 @@ class Params {
 		title = "UNITS: Fatigue";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0; // 1
 	};
 	class CTI_VEHICLES_EMPTY_TIMEOUT {
 		title = "UNITS: Vehicles Reycling Delay";
@@ -139,8 +139,8 @@ class Params {
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = "VISUAL: View Distance";
-		values[] = {1000,1500,2000,2500,3000,3500,4000};
-		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM"};
+		values[] = {1000,1500,2000,2500,3000,3500,4000,5000,6000};
+		texts[] = {"1 KM","1.5 KM","2 KM","2.5 KM","3 KM","3.5 KM","4 KM","5 KM", "6 KM"};
 		default = 4000;
 	};
 	class CTI_WEATHER_FAST {
@@ -207,28 +207,28 @@ class Params {
 	
 	class CTI_AI_TEAMS_GROUPSIZE {
 		title = "Zerty: GROUPS: Size (AI) -- Resistance, West, East ";
-		values[] = {0,6,8,10,12,14,16};
-		texts[] = {"0","6","8","10","12","14","16"};
-		default = 8;
+		values[] = {0,8,10,12,14,16};
+		texts[] = {"0","8","10","12","14","16"};
+		default = 3; // 8
 	};
 
 	class CTI_PLAYERS_GROUPSIZE {
-		title = "Zerty: GROUPS: Size (Players) (deprecated)";
+		title = "Zerty: GROUPS: Size (Players)";
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {"0","1","2","3","4","5","8","10","12","14","16"};
-		default = 4;
+		default = 9;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = "Zerty: GAMEPLAY: Missile Range";
 		values[] = {0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000};
 		texts[] = {"Disabled","500m","1000m","1500m","2000m","2500m","3000m","3500m","4000m","4500m","5000m","5500m","6000m","6500m","7000m","7500m","8000m","8500m","9000m","9500m","10000m"};
-		default = 0;
+		default = 2500;
 	};
 		class CTI_GAMEPLAY_3P {
 		title = "Zerty: GAMEPLAY: 3P view";
 		values[] = {0,1,2};
 		texts[] = {"All","Vehicle","None"};
-		default = 0;
+		default = 0; // 1
 	};
 	class CTI_ECONOMY_BASE_PLAYER_INCOME {
 		title = "Zerty: INCOME: base income for players";
@@ -270,7 +270,7 @@ class Params {
 		title = "Zerty: TOWNS: Detection Range";
 		values[] = {300,500,800,1000,1200};
 		texts[] = {"300m","500m","800m","1000m","1200m"};
-		default = 800;
+		default = 500;
 	};
 	class CTI_TOWNS_RESISTANCE_GROUPS_RATIO {
 		title = "Zerty: TOWNS : Resistance difficulty";
@@ -294,21 +294,21 @@ class Params {
 	class CTI_WEATHER_INITIAL {
 		title = "Zerty: WEATHER: Inital time";
 		values[] = {0,1,2,3,10};
-		texts[] = {"Morning","Noon","Evening","Midnigth","Random"};
-		default = 0;
+		texts[] = {"Morning","Noon","Evening","Midnight","Random"};
+		default = 0; // 10
 	};
 	class CTI_WEATHER_DYNAMIC {
 		title = "Zerty: WEATHER: Dynamic";
 		values[] = {0,1};
 		texts[] = {"False","True"};
-		default = 1;
+		default = 0;
 	};
 
    class initialWeatherParam {
     title = "Zerty: Starting Weather";
     values[] = {0,1,2,3,4};
     texts[] = {"Clear","Overcast","Rain","Fog","Random"};
-    default = 4;
+    default = 0;
   };
 	class SEPARATOR2 {
 		title = "=======================================================================";
@@ -325,9 +325,9 @@ class Params {
 	};
 	class CTI_SM_BASEP {
 		title = "Zerty: Strategic: Base Protection";
-		values[] = {0,1};
-		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		values[] = {0,0};
+		texts[] = {"Disabled","Disabled"};
+		default = 0; // Markus - To solve the issue of base camping without end.
 	};
 	class CTI_SM_FAR {
 		title = "Zerty: Strategic: FAR Revive Active";
@@ -363,7 +363,7 @@ class Params {
 		title = "Zerty: Strategic: Town Mortars";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0; // 1
 	};
 	class CTI_SM_STRATEGIC {
 		title = "Zerty: Strategic: Town Links";
@@ -394,6 +394,6 @@ class Params {
 		title = "Zerty: Electronic Warfare : Field Network Meshing";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0; // 1
 	};
 };

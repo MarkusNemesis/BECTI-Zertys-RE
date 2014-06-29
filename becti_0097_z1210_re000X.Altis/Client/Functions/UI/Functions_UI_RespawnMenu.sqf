@@ -56,12 +56,12 @@ CTI_UI_Respawn_GetMobileRespawn = {
 	private ["_available", "_center"];
 	_center = _this;
   _up=if (!( count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST} else {0};
-  _range=500+500*_up;
+  _range=CTI_RESPAWN_MOBILE_RANGE+(100*_up); // Markus - Ambo range base = 200m, Ambo range upgrades = 100m * level
 	_available = [];
 
 	{
 		if (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec", []]) && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {[_available, _x] call CTI_CO_FNC_ArrayPush};
-	} forEach (_center nearEntities [["Car","Air","Tank","Ship"], _range]);
+	} forEach (_center nearEntities [["Car"/*,"Air","Tank","Ship"*/], _range]); // Markus - Only cars can currently respawn people so thus it should be the only option.
 
 	_available
 };

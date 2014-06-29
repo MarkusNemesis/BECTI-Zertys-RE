@@ -15,7 +15,7 @@
 
 
 // ^HS^ for Headless Client
-joinUnassigned = 1;
+joinUnassigned = 0;
 //disableChannels[]={0,3};
 
 enableDebugConsole = 1;
