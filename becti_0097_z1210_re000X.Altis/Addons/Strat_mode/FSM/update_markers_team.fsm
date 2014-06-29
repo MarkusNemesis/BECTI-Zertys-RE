@@ -58,7 +58,7 @@ class FSM
        "	" \n
        "		_marker setMarkerColorLocal _color;" \n
        "		" \n
-       "		!isNull _group" \n
+       "		isNull _group" \n
        "	};" \n
        "	" \n
        "	deleteMarkerLocal _marker;" \n
