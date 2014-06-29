@@ -43,7 +43,7 @@ if (CTI_DEBUG) then {_upgrade_time =0};
 _end_time=time + _upgrade_time;
 while {time <= _end_time} do{
 	_logic setVariable ["cti_upgrade_lt", (ceil (_end_time -time )), true];
-	sleep 10;
+	sleep 1;
 };
 _logic setVariable ["cti_upgrade_lt",0, true];
 
