@@ -1,3 +1,5 @@
+RE 0001
+
 - Fixing Tachud not displaying friendly players when network disabled x
 - Ambulance Range Upgrade: Base range of 200m, each upgrade (3) will give 100m further. x
 - Migrate Params changes from RE 0004 x
@@ -12,3 +14,12 @@
 - Mortars can be mounted to offroaders, making improv mobile mortars x
 - Fire mission cooldown timer x
 - Fixed the repair counter bar during repairs x
+
+RE 0002
+- Fix players not appearing on the map x
+- Fix towns not activating when players within them x
+
+RE 0003
+- Merge Zertys 1211 changes
+- Refactor Ambo range upgrade cost x
+- Move Marshall and Marid back into LF

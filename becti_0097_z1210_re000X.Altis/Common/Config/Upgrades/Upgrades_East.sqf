@@ -152,7 +152,7 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Ambulance: Range", "Increase the max range of the respawn truck. 200m + (lvl x 100m)"]];
 _a=_a	+			[True];
-_c=_c +			[[6000,12000]];
+_c=_c +			[[6000,1200]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];

@@ -68,6 +68,7 @@ _u = _u		+ ["B_MRAP_01_hmg_F"];
 _u = _u		+ ["B_MRAP_01_gmg_F"];
 //_u = _u		+ ["B_UGV_01_F"];
 //_u = _u		+ ["B_UGV_01_rcws_F"];
+_u = _u  	+ ["B_APC_Wheeled_01_cannon_F"];
 _u = _u  	+ ["B_Truck_01_medical_F"];
 _u = _u		+ ['I_MRAP_03_F'];
 _u = _u		+ ['I_MRAP_03_hmg_F'];
@@ -76,7 +77,6 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
 
 _u 			= ["B_APC_Tracked_01_rcws_F"];
-_u = _u  	+ ["B_APC_Wheeled_01_cannon_F"];
 _u = _u		+ ["B_APC_Tracked_01_AA_F"];
 _u = _u		+ ["B_MBT_01_cannon_F"];
 _u = _u		+ ["B_MBT_01_TUSK_F"];
