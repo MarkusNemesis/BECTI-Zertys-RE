@@ -1,4 +1,5 @@
-while { true } do {
+disableSerialization;
+waitUntil {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_artillerymenu"}) exitWith {}; //--- Menu is closed.
 	
 	_artillery = uiNamespace getVariable "cti_dialog_ui_artillerymenu_artillery";
@@ -29,8 +30,15 @@ while { true } do {
 			};
 		} forEach _artillery;
 	};
+	private ['_cfmctrl'];
+	_cfmctrl = ((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015);
+	if (time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {
+		_cfmctrl ctrlEnable true;
+		_cfmctrl ctrlSetText "Call Fire Mission";
+	} else {
+		_cfmctrl ctrlEnable false;
+		_cfmctrl ctrlSetText format ["Fire Mission Cooldown: %1s", floor ((CTI_P_LastFireMission + CTI_ARTILLERY_TIMEOUT) - time)];
+	};
 	
-	((uiNamespace getVariable "cti_dialog_ui_artillerymenu") displayCtrl 290015) ctrlEnable (if (time - CTI_P_LastFireMission > CTI_ARTILLERY_TIMEOUT) then {true} else {false});
-	
-	sleep .1;
+	false
 };

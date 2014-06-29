@@ -4,6 +4,11 @@ SM_MAX_PATROLS=0;
 SM_PATROL_RATIO=4;
 SM_PATROL_UNITS=["GUER_VEHICLES_PATROL"];
 SM_PATROLS_TO=300;
+
+
+// Markus - Delay patrol spawns for 10 minutes
+sleep (60*10);
+
 PATROL_server_WD ={ //server loop to create  patrols
 	private ["_ai_func","_purge_func","_group","_to_create","_resistance_towns","_starting_town","_pos"];
 	while { !CTI_GameOver} do

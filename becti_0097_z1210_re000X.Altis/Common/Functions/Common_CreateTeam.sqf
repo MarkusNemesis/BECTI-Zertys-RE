@@ -21,6 +21,18 @@ _crews = [];
 {
 	if (_x isKindOf "Man") then {
 		_unit = [_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
+		// Markus - AI Skill redux
+		_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
+		_skill = _AISkill / 5;
+		_unit setSkill ["aimingAccuracy",_skill];
+		_unit setSkill ["aimingShake",_skill];
+		_unit setSkill ["aimingSpeed",_skill];
+		_unit setSkill ["spotDistance",100];
+		_unit setSkill ["spotTime",100];
+		_unit setSkill ["courage",100];
+		_unit setSkill ["commanding",100];
+		_unit setSkill ["endurance",100];
+		/// - Markus
 		[_created_units, _unit] call CTI_CO_FNC_ArrayPush;
 		/*if (_side == resistance && ! isNil "GUER_ZEUS") then {
 			GUER_ZEUS addCuratorEditableObjects [[_unit],true];
@@ -42,6 +54,11 @@ _crews = [];
 		[_created_vehicles, _vehicle] call CTI_CO_FNC_ArrayPush;
 		_vehicle_crew = [_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
 		_crews = _crews + _vehicle_crew;
+		{
+			_x setSkill ["aimingAccuracy",0.7];
+			_x setSkill ["aimingShake",0.7];
+			_x setSkill ["aimingSpeed",0.7];
+		} foreach _crews;
 	};
 } forEach _units;
 

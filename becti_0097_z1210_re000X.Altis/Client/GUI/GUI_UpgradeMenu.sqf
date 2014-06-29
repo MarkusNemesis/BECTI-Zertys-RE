@@ -3,7 +3,7 @@ _last_running = -1;
 _last_upgrades_check = -1;
 _last_upgrades_tcheck = -1;
 
-while { true } do {
+waitUntil {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_upgrademenu"}) exitWith {}; //--- Menu is closed.
 
 	_selected = lnbCurSelRow ((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002);
@@ -36,7 +36,7 @@ while { true } do {
 	};
 
 	_running = CTI_P_SideLogic getVariable "cti_upgrade";
-	if (_running != _last_running || (time - _last_upgrades_tcheck > 5)) then {
+	//if (_running != _last_running || (time - _last_upgrades_tcheck > 5)) then {
 		_last_upgrades_tcheck = time;
 		_last_running = _running;
 		_html = "";
@@ -44,7 +44,7 @@ while { true } do {
 			_html = format ["Running: <t color='#F5D363'>%1 :: %2 s left.</t>", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
 		};
 		((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250009) ctrlSetStructuredText parseText _html;
-	};
+	//};
 
-	sleep .1;
+	false
 };

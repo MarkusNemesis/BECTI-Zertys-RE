@@ -331,21 +331,25 @@ if (CTI_IsClient) then {
 
 if (CTI_IsServer) then {
 		if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then {
-			0 spawn CTI_SM_Allow_Capture;
+			CTI_SM_STRATEGIC_FNC = compilefinal preprocessFileLineNumbers CTI_SM_Allow_Capture;
+			0 spawn CTI_SM_STRATEGIC_FNC;
 		};
 		if ( (missionNamespace getVariable 'CTI_SM_BASEP')==1) then {
-			 0 spawn CTI_SM_Base_Prot;
+			CTI_SM_BASEP_FNC = compilefinal preprocessFileLineNumbers CTI_SM_Base_Prot;
+			0 spawn CTI_SM_BASEP_FNC;
 		};
 		if ( (missionNamespace getVariable 'CTI_SM_RADAR')==1) then {
-			0 execVM "Addons\Strat_mode\Functions\SM_Air_Radar.sqf";
+			CTI_SM_RADAR_FNC = compilefinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Air_Radar.sqf";
+			0 spawn CTI_SM_RADAR_FNC;
 		};
 		if ( (missionNamespace getVariable 'CTI_SM_PATROLS')==1) then {
-			0 execVM "Addons\Strat_mode\Functions\SM_AI_Patrols.sqf";
+			CTI_SM_PATROLS_FNC = compilefinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_AI_Patrols.sqf";
+			0 spawn CTI_SM_PATROLS_FNC;
 		};
 		//0 execVM "Addons\Strat_mode\Functions\SM_CAS_Patrols.sqf";
 		//groundcontainer cleanup
-		0 execVM "Addons\Strat_mode\Functions\SM_CleanUp.sqf";
-    0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
+		0 call compile preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_CleanUp.sqf";
+
 
 		if !( isNil "ADMIN_ZEUS") then {
 			0 spawn {
@@ -429,8 +433,8 @@ if (CTI_IsClient) then {
 	//dynamics and functions
 	0 execVM "Addons\Strat_mode\Functions\SM_Town_Actions.sqf";
 
-	//adaptative group size
-	0 execVM "Addons\Strat_mode\Functions\SM_AdaptGroup.sqf";
+	//adaptative group size - Markus - Disabled
+	//0 execVM "Addons\Strat_mode\Functions\SM_AdaptGroup.sqf";
 
 	// gear auto save
 	/*0 spawn {

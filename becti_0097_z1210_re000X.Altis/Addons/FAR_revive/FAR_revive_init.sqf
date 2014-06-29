@@ -28,7 +28,7 @@ if (isnil "FAR_ReviveMode") then {FAR_ReviveMode = 1};
 	while {!CTI_GameOver } do {
 		_main_disp=findDisplay 49;
 		if (! isNull _main_disp) then {
-			_ntime=time +120;
+			_ntime=time +5;
 
 			while {time < _ntime && ! (isNull _main_disp) } do {
 				(_main_disp displayctrl 1010) ctrlEnable false;

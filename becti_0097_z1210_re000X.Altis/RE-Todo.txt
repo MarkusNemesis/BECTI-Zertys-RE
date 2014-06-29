@@ -1,4 +1,14 @@
-- Fixing Tachud not displaying friendly players
+- Fixing Tachud not displaying friendly players when network disabled x
 - Ambulance Range Upgrade: Base range of 200m, each upgrade (3) will give 100m further. x
 - Migrate Params changes from RE 0004 x
 - Migrate balance changes from RE 0004 x
+- Missile Range 4000m (Due to Trophy APS) x
+- Disactivate typo fixed (again) x
+- Rearming workers and teaching them how to run x
+- Ambulance cost to 1500 from 1250 x
+- Black MX rifles x
+- Fix Update menu not updating dynamically for time remaining x
+- Delay patrol spawn for 10 minutes from start x
+- Mortars can be mounted to offroaders, making improv mobile mortars x
+- Fire mission cooldown timer x
+- Fixed the repair counter bar during repairs x

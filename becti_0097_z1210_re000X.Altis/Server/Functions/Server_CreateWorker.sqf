@@ -46,7 +46,7 @@ if !(_ai_order) then {{if (typeName _x == "STRING") exitWith {_index = _forEachI
 if (_index < 0 && !_ai_order) exitWith {diag_log "couldn't find a value to set a worker into"};
 
 _group = createGroup _side;
-_group setSpeedMode "LIMITED";
+//_group setSpeedMode "LIMITED";
 
 _model = missionNamespace getVariable format["CTI_%1_Worker", _side];
 if (isNil '_model') then {_model = "C_man_1"};
@@ -56,9 +56,9 @@ _worker = _group createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosit
 if !(_ai_order) then {_workers set [_index, _worker]} else {[_workers, _worker] call CTI_CO_FNC_ArrayPush};
 _logic setVariable ["cti_workers", _workers, true];
 
-removeAllWeapons _worker;
-_worker disableAI "TARGET";
-_worker disableAI "AUTOTARGET";
+//removeAllWeapons _worker;
+//_worker disableAI "TARGET";
+//_worker disableAI "AUTOTARGET";
 
 if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_worker],true];};
 

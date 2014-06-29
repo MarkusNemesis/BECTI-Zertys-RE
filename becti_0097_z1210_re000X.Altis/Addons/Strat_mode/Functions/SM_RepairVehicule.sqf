@@ -22,7 +22,7 @@ SM_repair_vehicle={
 			(_stime - time) call HUD_PBar_update;
 			sleep 1;
 		};
-
+		0 call HUD_PBar_stop;
 		["Repairing",(getDammage _target),1,0] call HUD_PBar_start;
 		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
 			sleep 1;

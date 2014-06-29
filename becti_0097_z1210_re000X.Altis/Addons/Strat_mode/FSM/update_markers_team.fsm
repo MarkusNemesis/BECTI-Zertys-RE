@@ -28,7 +28,7 @@ class FSM
        "_track_leader = {" \n
        "	_group = _this;" \n
        "	" \n
-       "	sleep (random .5);" \n
+       "	" \n
        "	" \n
        "	_marker = Format[""cti_teammarker_%1"", CTI_P_MarkerIterator]; CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;" \n
        "	createMarkerLocal [_marker, [0,0,0]];" \n
@@ -36,7 +36,7 @@ class FSM
        "	_marker setMarkerColorLocal CTI_P_SideColor;" \n
        "	_marker setMarkerSizeLocal [0.75, 0.75];" \n
        "	_unc=0;" \n
-       "	while {!isNull _group} do {" \n
+       "	waituntil {" \n
        "		_color = CTI_P_SideColor;" \n
        "		" \n
        "		if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" == 0) then {" \n
@@ -58,7 +58,7 @@ class FSM
        "	" \n
        "		_marker setMarkerColorLocal _color;" \n
        "		" \n
-       "		sleep .4;" \n
+       "		!isNull _group" \n
        "	};" \n
        "	" \n
        "	deleteMarkerLocal _marker;" \n

@@ -174,7 +174,7 @@ class Params {
 	class CTI_AI_SKILL {
 		title = "Zerty: AI: Skill (credit : Bl1p, fluit)";
 		values[] = {1,2,3,4,5};
-		texts[] = {"Retards","DumbFucks","NotSobad","Good","Very Good"};
+		texts[] = {"Very Easy","Easy","Medium","Hard","Very Hard"};
 		default = 3;
 	};
 
@@ -222,7 +222,7 @@ class Params {
 		title = "Zerty: GAMEPLAY: Missile Range";
 		values[] = {0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000};
 		texts[] = {"Disabled","500m","1000m","1500m","2000m","2500m","3000m","3500m","4000m","4500m","5000m","5500m","6000m","6500m","7000m","7500m","8000m","8500m","9000m","9500m","10000m"};
-		default = 2500;
+		default = 4000;
 	};
 		class CTI_GAMEPLAY_3P {
 		title = "Zerty: GAMEPLAY: 3P view";

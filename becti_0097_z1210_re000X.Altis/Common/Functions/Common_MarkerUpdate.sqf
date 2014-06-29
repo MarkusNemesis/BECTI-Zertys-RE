@@ -61,16 +61,17 @@ _marker_name setMarkerColorLocal _marker_color;
 _marker_name setMarkerSizeLocal _marker_size;
 
 
-
-while {alive _target} do {
+// Markus - Fix the need for an 'update delay' with a waituntil
+waitUntil {
 	if ((_target getVariable "cti_net")== CTI_P_SideID) then {
 		_marker_name setMarkerPosLocal (visiblePosition _target);
-		[_target,_marker_l] call AN_Draw;
+		//[_target,_marker_l] call AN_Draw; - Markus - Function does not even exist...
 		if !(( markerAlpha _marker_name) == 1) then {_marker_name setMarkerAlphaLocal 1;};
 	} else {
 		if !(( markerAlpha _marker_name) == 0) then {_marker_name setMarkerAlphaLocal 0;};
 	};
-	sleep _update_delay;
+	//sleep _update_delay;
+	!alive _target
 };
 
 if (_marker_dead_type != "" && !(isNull _target)) then {

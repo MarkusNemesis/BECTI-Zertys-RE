@@ -20,8 +20,8 @@ _t=_t+			[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Light Factory", "Unlock better motorized units"]];
 _a=_a	+			[true];
-_c=_c +			[[1500]];
-_lev=_lev+	[1];
+_c=_c +			[[1500,3000]];
+_lev=_lev+	[2];
 _lin=_lin+	[[[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO]];
 
