@@ -54,7 +54,7 @@ _specials = [];
 		- DMG_Reduce: Reduce the incoming damage on a building making it stronger if above 1.
 */
 _headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
-_classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_Cargo_House_V3_F", "Land_Cargo_House_V3_ruins_F"]]; // Markus - Tan buildings for EAST
 _prices = _prices 			+ [1000];
 _times = _times 			+ [60];
 _placements = _placements 	+ [[180, 15]];
@@ -75,7 +75,7 @@ _placements = _placements 	+ [[180, 20]];
 _specials = _specials		+ [[["DMG_Alternative"], ["DMG_Reduce", 72],["Connected"]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"]];
-_classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_Cargo_HQ_V3_F", "Land_Cargo_HQ_V3_ruins_F"]]; // Markus - Tan buildings for EAST
 _prices = _prices 			+ [3500];
 _times = _times 			+ [120];
 _placements = _placements 	+ [[90, 20]];
