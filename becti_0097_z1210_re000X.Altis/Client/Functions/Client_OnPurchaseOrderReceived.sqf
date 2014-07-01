@@ -43,6 +43,7 @@ _req_classname = _this select 1;
 _req_buyer = _this select 2;
 _factory = _this select 3;
 _veh_infos = _this select 4;
+_veh_weapons = _this select 5;
 
 _model = _req_classname;
 _var_classname = missionNamespace getVariable _req_classname;
@@ -76,6 +77,8 @@ if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classna
 
 //--- Check if the buyer has enough funds to perform this operation
 _cost = _var_classname select 2;
+_scaling = _veh_weapons call CTI_CO_FNC_GetWeaponCostScaling;
+_cost = floor ( _cost * _scaling );
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
@@ -127,6 +130,7 @@ if (_model isKindOf "Man") then {
 	[_units, _vehicle] call CTI_CO_FNC_ArrayPush;
 } else {
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
+	_vehicle setVariable [ "cti_custom_weapon_loadout", (_veh_weapons) ];
 
 	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};

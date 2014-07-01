@@ -54,6 +54,8 @@ CTI_CO_FNC_GetTeamVehicles = compileFinal preprocessFileLineNumbers "Common\Func
 CTI_CO_FNC_GetTownsResources = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetTownsResources.sqf";
 CTI_CO_FNC_GetUnitsScore = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetUnitsScore.sqf";
 CTI_CO_FNC_GetVehicleTurrets = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleTurrets.sqf";
+CTI_CO_FNC_GetVehicleWeaponGroups = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetVehicleWeaponGroups.sqf";
+CTI_CO_FNC_GetWeaponCostScaling = compileFinal preprocessFileLineNumbers "Common\Functions\Common_GetWeaponCostScaling.sqf";
 CTI_CO_FNC_HasOrderedChanged = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasOrderedChanged.sqf";
 CTI_CO_FNC_HasStructure = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasStructure.sqf";
 CTI_CO_FNC_HasUpgrade = compileFinal preprocessFileLineNumbers "Common\Functions\Common_HasUpgrade.sqf";
@@ -74,6 +76,7 @@ CTI_CO_FNC_RearmVehicle = compileFinal preprocessFileLineNumbers "Common\Functio
 CTI_CO_FNC_RemoveWaypoints = compileFinal preprocessFileLineNumbers "Common\Functions\Common_RemoveWaypoints.sqf";
 CTI_CO_FNC_SortByDistance = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SortByDistance.sqf";
 CTI_CO_FNC_SanitizeAircraft = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraft.sqf";
+CTI_CO_FNC_SanitizeAircraftWeapons = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftWeapons.sqf";
 CTI_CO_FNC_SanitizeAircraftAA = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftAA.sqf";
 CTI_CO_FNC_SanitizeAircraftAT = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftAT.sqf";
 CTI_CO_FNC_SanitizeAircraftCM = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftCM.sqf";
@@ -103,6 +106,9 @@ call compile preprocessFileLineNumbers "Common\Config\Towns\Towns_East.sqf";
 
 (west) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_West.sqf";
 (east) call compile preprocessFileLineNumbers "Common\Config\Squads\Squad_East.sqf";
+
+// Constants for air vehicle loadouts
+call compile preprocessFileLineNumbers "Common\Config\Units\Set_WeaponLoadouts.sqf";
 
 //--- Network communication handler
 "CTI_NetCom" addPublicVariableEventHandler {(_this select 1) Spawn CTI_CO_FNC_OnPVFReceived};

@@ -103,11 +103,12 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 	_IDCs = [110100, 110101, 110102, 110103];
 
 	if (_classname isKindOf "Man") then {
-		// {
-			// ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false;
-		// } forEach (_IDCs + [110104]);
 		call CTI_UI_Purchase_HideVehicleIcons;
+		call CTI_UI_Purchase_HideWeaponIcons;
 	} else {
+		
+		[ _classname , CTI_P_SideJoined ] call CTI_UI_Purchase_DisplayVehicleWeaponIcons;
+		
 		_var = missionNamespace getVariable _classname;
 		_turrets = _var select CTI_UNIT_TURRETS;
 
@@ -137,7 +138,17 @@ CTI_UI_Purchase_UpdateCost = {
 	if (_classname != "") then {
 		_var = missionNamespace getVariable _classname;
 		_cost = _var select 2;
+		
+		_basescale=CTI_WEAP_BASE_COSTSCALE;
+		_summedscale=_basescale;
 		if !(_classname isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
+			
+			
+			// replace here
+			_selected_weapons = call CTI_UI_Get_SelectedWeapons;
+			_scale = _selected_weapons call CTI_CO_FNC_GetWeaponCostScaling;
+			_cost = ( _cost * _scale );
+			
 			_crew = switch (true) do { case (_classname isKindOf "Tank"): {"Crew"}; case (_classname isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 			_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
 
@@ -162,12 +173,103 @@ CTI_UI_Purchase_UpdateCost = {
 	((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110014) ctrlSetStructuredText (parseText format["<t align='left'>Cost: <t color='#F56363'>$%1</t></t>", _cost]);
 };
 
+CTI_UI_Get_SelectedWeapons =
+{
+	_returned = [];
+	{
+		_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_IDC" , _x ];
+		_lock_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_RESEARCH_LOCKED_IDC" , _x ];
+		if ( ctrlShown ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl ( _idc )) ) then 
+		{
+			if ( ! ( ctrlShown ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl ( _lock_idc )) ) ) then 
+			{
+				if ( uiNamespace getVariable ( format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _x] ) ) then 
+				{
+					_returned = _returned + [ _x ];
+				};
+			};
+		};
+	} forEach ( CTI_WEAP_ARRAY_LIST );
+	_returned
+};
 CTI_UI_Purchase_HideVehicleIcons = {
 	private ["_IDCs"];
 	_IDCs = [110100, 110101, 110102, 110103, 110104];
 	{ ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false } forEach _IDCs;
 };
 
+CTI_UI_Purchase_HideWeaponIcons = {
+	{
+		// Hide weapon icon
+		_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_IDC" , _x];
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _idc) ctrlShow false;
+		
+		// Hide research locked icon
+		_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_RESEARCH_LOCKED_IDC" , _x];
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _idc) ctrlShow false;
+		
+	} forEach ( CTI_WEAP_ARRAY_LIST );
+};
+
+
+CTI_UI_Purchase_DisplayVehicleWeaponIcons = 
+{
+	_classname = _this select 0;
+	_side = _this select 1;
+	
+	_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
+	
+	_all_vehicle_weapon_groups = ( _classname call CTI_CO_FNC_GetVehicleWeaponGroups );
+	
+	{
+		_weapon_category = _x;
+		_icon_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_IDC" , _weapon_category ];
+		_lock_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_RESEARCH_LOCKED_IDC" , _weapon_category ];
+		if ( _weapon_category in _all_vehicle_weapon_groups ) then
+		{
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _icon_idc ) ctrlShow true;
+			_upgrade_value = 0;
+			switch ( _weapon_category ) do
+			{
+				case "ATGM": 
+				{
+					_upgrade_value = _upgrades select CTI_UPGRADE_AIR_AT;
+				};
+				case "A2AM": 
+				{
+					_upgrade_value = _upgrades select CTI_UPGRADE_AIR_AA;
+				};
+				case "ROCKETS": 
+				{
+					_upgrade_value = _upgrades select CTI_UPGRADE_AIR_FFAR;
+				};
+				case "BOMBS": 
+				{
+					// No research for bombs .. so always remove the lock marker
+					_upgrade_value = 1;
+				};
+			};
+			
+			if ( _upgrade_value == 1 ) then
+			{
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _lock_idc ) ctrlShow false;
+			}
+			else
+			{
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _lock_idc ) ctrlShow true;
+				// Set weapon icon to red
+				_color = [ 1.0 , 0.1 , 0.1 , 1 ];
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl (_icon_idc )) ctrlSetTextColor _color;
+			};
+		}
+		else
+		{
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _icon_idc ) ctrlShow false;
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _lock_idc ) ctrlShow false;
+		};
+	} forEach ( CTI_WEAP_ARRAY_LIST );
+	
+};
 CTI_UI_Purchase_OnUnitListLoad = {
 	private ["_classname"];
 	if (lnbCurSelRow 111007 > -1) then {
@@ -176,10 +278,12 @@ CTI_UI_Purchase_OnUnitListLoad = {
 			(_classname) call CTI_UI_Purchase_UpdateVehicleIcons;
 		} else {
 			call CTI_UI_Purchase_HideVehicleIcons;
+			call CTI_UI_Purchase_HideWeaponIcons;
 			("") call CTI_UI_Purchase_UpdateCost;
 		};
 	} else {
 		call CTI_UI_Purchase_HideVehicleIcons;
+		call CTI_UI_Purchase_HideWeaponIcons;
 		("") call CTI_UI_Purchase_UpdateCost;
 	};
 };
@@ -224,6 +328,15 @@ CTI_UI_Purchase_SetVehicleIconsColor = {
 	((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110104) ctrlSetTextColor _color;
 };
 
+CTI_UI_Purchase_UpdateLoadoutIconsColor = {
+	private ["_color", "_idc"];
+	{
+		_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_IDC" , _x ];
+		_color = if ( uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _x]) then {[0.15, 1, .3, 1]} else {[0.2, 0.2, 0.2, 1]};
+		
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl (_idc )) ctrlSetTextColor _color;
+	} forEach ( CTI_WEAP_ARRAY_LIST );
+};
 CTI_UI_Purchase_GetVehicleInfo = {
 	private ["_idc", "_returned", "_selected"];
 	_idc = 110100;
@@ -236,5 +349,21 @@ CTI_UI_Purchase_GetVehicleInfo = {
 
 	if (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock") then {_returned set [4, true]};
 
+	_returned
+};
+
+CTI_UI_Purchase_GetWeaponSelectedInfo = {
+	private [ "_returned" , "_idc" ];
+	_returned = [];
+	{
+		_idc = missionNamespace getVariable format [ "CTI_WEAP_%1_IDC" , _x ];
+		if ( ctrlShown ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl ( _idc )) ) then 
+		{ 
+			if ( uiNamespace getVariable ( format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _x] ) ) then 
+			{ 
+				_returned = _returned + [ _x ];
+			};
+		};
+	} forEach ( CTI_WEAP_ARRAY_LIST );
 	_returned
 };

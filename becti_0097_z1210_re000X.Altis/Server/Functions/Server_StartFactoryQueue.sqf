@@ -51,6 +51,7 @@ while { alive _factory } do {
 	_req_toai = _request select 5;
 	_req_veh_infos = _request select 6;
 	_req_side = _request select 7;
+	_req_veh_weapons = _request select 8;
 	
 	_req_time_out = time + _req_time + 15;
 	
@@ -68,7 +69,7 @@ while { alive _factory } do {
 		if (typeName _req_target != "SIDE") then {
 			if (_req_buyer != _req_target) then {[["CLIENT", leader _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
 			
-			[["CLIENT", leader _req_target], "Client_OnPurchaseOrderReceived", [_req_seed, _req_classname, _req_buyer, _factory, _req_veh_infos]] call CTI_CO_FNC_NetSend;
+			[["CLIENT", leader _req_target], "Client_OnPurchaseOrderReceived", [_req_seed, _req_classname, _req_buyer, _factory, _req_veh_infos , _req_veh_weapons ]] call CTI_CO_FNC_NetSend;
 			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\Functions\Server_StartFactoryQueue.sqf", format["Request from group [%1] concerning classname [%2] with seed [%3] in queue thread [%4] was forwarded to team [%5]", _req_buyer, _req_classname, _req_seed, _thread_id, _req_target]] call CTI_CO_FNC_Log };
 		};
 	};

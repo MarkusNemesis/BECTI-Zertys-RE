@@ -38,6 +38,7 @@ _classname = _this select 3;
 _factory = _this select 4;
 _veh_infos = _this select 5;
 _seed = _this select 6;
+_veh_weapons = _this select 7;
 
 _buyto_ai = false;
 if (typeName _team == "SIDE") then {
@@ -53,7 +54,7 @@ if (CTI_Debug) then {_required_time=0;};
 
 //--- Compose the request
 //_request = [[46441351.1385, "blowdoll", 10, Group Benny, Group McFly, false, [...], West]];
-_request = [[_seed, _classname, _required_time, _buyer, _team, _buyto_ai, _veh_infos, _side]];
+_request = [[_seed, _classname, _required_time, _buyer, _team, _buyto_ai, _veh_infos, _side , _veh_weapons ]];
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\Functions\Server_OnClientPurchase.sqf", format["[%1] Received a purchase request from team [%2] to team [%3] for a [%4] with seed [%5] on factory [%6 (%7)]. Target is AI -> [%8]", _side, _buyer, _team, _classname, _seed, _factory, _factory getVariable "cti_structure_type", _buyto_ai]] call CTI_CO_FNC_Log };
 
