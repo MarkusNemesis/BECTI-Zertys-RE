@@ -28,3 +28,4 @@ RE 0003
 - Gameplay: Revise FOB model to be a tent type model (Can be destroyed by running it over etc)
 - UI: Vote for commander feature
 - Gear Menu: Buying magazines doesn't actually give it to you.
+- Merge Henroth's "Customisation of Aircraft" feature.
