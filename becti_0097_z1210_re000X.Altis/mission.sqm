@@ -1151,7 +1151,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					presenceCondition="isMultiplayer";
+					presenceCondition="false";
 					position[]={8419.8525,87.637787,25208.281};
 					class args
 					{
