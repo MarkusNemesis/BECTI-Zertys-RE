@@ -3,6 +3,7 @@ _action = _this select 0;
 
 switch (_action) do {
 	case "onLoad": {
+		
 		// cti_dialog_ui_purchasemenu_action
 		_get = call CTI_UI_Purchase_GetFirstAvailableFactories;
 		_factory = _get select 0;
@@ -13,9 +14,12 @@ switch (_action) do {
 		// if (count _factories == 0) exitWith {  }; //debug
 		
 		{if (isNil {uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x]}) then {uiNamespace setVariable [format ["cti_dialog_ui_purchasemenu_vehicon_%1", _x], true]}} forEach ['driver','gunner','commander','turrets','lock'];
+		
+		{if (isNil {uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _x]}) then {uiNamespace setVariable [format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _x], false]}} forEach ( CTI_WEAP_ARRAY_LIST );
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_unitcost", 90000]; //--- Muhahahah!
 		
 		call CTI_UI_Purchase_SetVehicleIconsColor;
+		call CTI_UI_Purchase_UpdateLoadoutIconsColor;
 		(_factory_index) call CTI_UI_Purchase_SetIcons;
 		(_factory_type) call CTI_UI_Purchase_FillUnitsList;
 		call CTI_UI_Purchase_OnUnitListLoad;
@@ -48,6 +52,8 @@ switch (_action) do {
 		
 		_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [_changedTo, 0];
 		(_classname) call CTI_UI_Purchase_UpdateVehicleIcons;
+		(_classname) call CTI_UI_Purchase_DisplayVehicleWeaponIcons;
+		
 	};
 	case "onGroupLBSelChanged": {
 		_changedTo = _this select 1;
@@ -97,6 +103,19 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _idc) ctrlSetTextColor _color;
 		(_classname) call CTI_UI_Purchase_UpdateCost;
 	};
+	case "onWeaponLoadoutClicked": {
+		_weapon = _this select 1;
+		_idc = _this select 2;
+		
+		_classname = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbData [lnbCurSelRow 111007, 0];
+		
+		_toggle = if (uiNamespace getVariable format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _weapon]) then {false} else {true};
+		uiNamespace setVariable [format ["cti_dialog_ui_purchasemenu_weaploadicon_%1", _weapon], _toggle];
+		
+		_color = if (_toggle) then {[0.15, 1, .3, 1]} else {[0.2, 0.2, 0.2, 1]};
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _idc) ctrlSetTextColor _color;
+		(_classname) call CTI_UI_Purchase_UpdateCost;
+	};
 	case "onVehicleLockClicked": {
 		_toggle = if (uiNamespace getVariable "cti_dialog_ui_purchasemenu_vehicon_lock") then {false} else {true};
 		uiNamespace setVariable ["cti_dialog_ui_purchasemenu_vehicon_lock", _toggle];
@@ -116,6 +135,9 @@ switch (_action) do {
 			
 			_isEmpty = false;
 			_veh_info = if (_classname isKindOf "Man") then { [] } else { call CTI_UI_Purchase_GetVehicleInfo };
+			
+			_veh_weapons = call CTI_UI_Purchase_GetWeaponSelectedInfo;
+			
 			if (count _veh_info > 0) then {
 				if !((_veh_info select 0) || (_veh_info select 1) || (_veh_info select 2) || (_veh_info select 3)) then { _isEmpty = true };
 			};
@@ -131,7 +153,7 @@ switch (_action) do {
 							_get = missionNamespace getVariable _classname;
 							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
 							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%2<t>A <t color='#ccffaf'>%1</t> is being built</t>", _get select CTI_UNIT_LABEL, _picture];
-							[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
+							[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info , _veh_weapons ] call CTI_CL_FNC_PurchaseUnit;
 						};
 					} else {
 						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Your unit limit has been reached.";

@@ -34,6 +34,15 @@ _type = typeOf _vehicle;
 
 //_vehicle setVehicleAmmoDef 1;
 
+// Fix for planes ... uses sanatise script to clean up afterwards
+if ( _vehicle isKindOf "Plane" ) then
+{
+	_all_weapons = getArray ( configFile >> "CfgVehicles" >> _type >> "weapons" );
+	{
+		_vehicle addWeaponGlobal _x;
+	} forEach ( _all_weapons );
+};
+
 //--- Driver
 {_vehicle removeMagazineTurret [_x, [-1]];} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
 {_vehicle addMagazineTurret [_x, [-1]]} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));

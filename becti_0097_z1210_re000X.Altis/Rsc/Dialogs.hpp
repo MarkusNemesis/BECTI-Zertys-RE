@@ -411,6 +411,79 @@ class CTI_RscPurchaseMenu {
 			text = "Rsc\Pictures\i_turrets.paa";
 			action = "['onVehicleIconClicked', 'turrets', 110103] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
+		/*
+			New Weapon Loadoat Icons
+		*/
+		class CTI_Icon_ATGM : CTI_Icon_Driver {
+			idc = 110110;
+			x = "SafeZoneX + (SafeZoneW * 0.314)";
+			w = "SafeZoneW * 0.025";
+			color[] = {0.15, 1, .3, 1};
+			
+			
+			text = "Rsc\Pictures\w_atgm.paa";
+			action = "[ 'onWeaponLoadoutClicked', 'ATGM', 110110 ] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_LoadoutA2AM : CTI_Icon_ATGM {
+			idc = 110111;
+			x = "SafeZoneX + (SafeZoneW * 0.286)";
+			
+			text = "Rsc\Pictures\w_a2am.paa";
+			action = "[ 'onWeaponLoadoutClicked', 'A2AM', 110111 ] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_LoadoutRockets : CTI_Icon_ATGM {
+			idc = 110112;
+			x = "SafeZoneX + (SafeZoneW * 0.257)";
+			
+			text = "Rsc\Pictures\w_rockets.paa";
+			action = "[ 'onWeaponLoadoutClicked', 'ROCKETS', 110112 ] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		class CTI_Icon_LoadoutBombs : CTI_Icon_ATGM {
+			idc = 110113;
+			x = "SafeZoneX + (SafeZoneW * 0.227)";
+			
+			text = "Rsc\Pictures\w_bombs.paa";
+			action = "[ 'onWeaponLoadoutClicked', 'BOMBS', 110113 ] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
+		};
+		// Reasearch locked icons
+		class CTI_Icon_ATGM_ResearchLocked : CTI_Icon_ATGM {
+			idc = 110210;
+			x = "SafeZoneX + (SafeZoneW * 0.314)";
+			
+			color[] = {1, 0.22745098, 0.22745098, 1};
+			colorActive[] = {1, 0.22745098, 0.22745098, 1};
+			colorBackground[] = {1, 0.22745098, 0.22745098, 1};
+			colorBackgroundSelected[] = {1, 0.22745098, 0.22745098, 1};
+			colorText[] = {1, 0.22745098, 0.22745098, 1};
+			colorDisabled[] = {1, 0.22745098, 0.22745098, 1};
+			colorFocused[] = {1, 0.22745098, 0.22745098, 1};
+			colorSelection[] = {1, 0.22745098, 0.22745098, 1};
+			
+			
+			text = "Rsc\Pictures\w_research.paa";
+			action = "";
+		};
+		class CTI_Icon_LoadoutA2AM_ResearchLocked : CTI_Icon_ATGM_ResearchLocked {
+			idc = 110211;
+			x = "SafeZoneX + (SafeZoneW * 0.286)";
+			
+			text = "Rsc\Pictures\w_research.paa";
+			action = "";
+		};
+		class CTI_Icon_LoadoutRockets_ResearchLocked : CTI_Icon_ATGM_ResearchLocked {
+			idc = 110212;
+			x = "SafeZoneX + (SafeZoneW * 0.257)";
+			
+			text = "Rsc\Pictures\w_research.paa";
+			action = "";
+		};
+		class CTI_Icon_LoadoutBombs_ResearchLocked : CTI_Icon_ATGM_ResearchLocked {
+			idc = 110213;
+			x = "SafeZoneX + (SafeZoneW * 0.227)";
+			
+			text = "Rsc\Pictures\w_research.paa";
+			action = "";
+		};
 		class CTI_Icon_Lock : CTI_Icon_Driver {
 			idc = 110104;
 			x = "SafeZoneX + (SafeZoneW * 0.47)";

@@ -27,12 +27,13 @@
     [_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
 */
 
-private ["_classname", "_factory", "_seed", "_team", "_veh_infos"];
+private ["_classname", "_factory", "_seed", "_team", "_veh_infos", "_veh_weapons"];
 
 _classname = _this select 0;
 _factory = _this select 1;
 _team = _this select 2;
 _veh_infos = _this select 3;
+_veh_weapons = _this select 4;
 
 if !(call CTI_CL_FNC_IsPlayerCommander) then {
 	if (_team != group player) then {_team = group player};
@@ -41,7 +42,7 @@ if !(call CTI_CL_FNC_IsPlayerCommander) then {
 _seed = time + random 10000 - random 500 + diag_frameno;
 
 [CTI_P_PurchaseRequests, [_seed, _classname, _veh_infos, _factory, _team, true]] call CTI_CO_FNC_ArrayPush; // seed, classname, can be canceled
-["SERVER", "Request_Purchase", [_team, group player, CTI_P_SideJoined, _classname, _factory, _veh_infos, _seed]] call CTI_CO_FNC_NetSend;
+["SERVER", "Request_Purchase", [_team, group player, CTI_P_SideJoined, _classname, _factory, _veh_infos, _seed , _veh_weapons]] call CTI_CO_FNC_NetSend;
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_PurchaseUnit.sqf", format["Purchased a [%1] to team [%2] from factory [%3 (%4)] with a generated seed of [%5]. Target is us -> [%6]", _classname, _team, _factory, _factory getVariable "cti_structure_type", _seed, _team == group player]] call CTI_CO_FNC_Log };
 
