@@ -21,11 +21,13 @@ RE 0002
 
 RE 0003
 - Misc: Merge Zertys 1211 changes
-- Gameplay: Refactor Ambo range upgrade cost x
+- Gameplay: Fix Ambo range upgrade cost (Forgot to change it last version) x
 - Balance: Move Marshall and Marid back into LF x
-- Misc: Remove Zeus Integration
+- Misc: Remove Zeus Integration x
 - Gameplay: Disallow base building within towns/other objects.
-- Gameplay: Revise FOB model to be a tent type model (Can be destroyed by running it over etc)
-- UI: Vote for commander feature
+- Gameplay: Revise FOB model to be a tent type model (Can be destroyed by running it over etc)?
+- UI: Vote for commander feature?
 - Gear Menu: Buying magazines doesn't actually give it to you.
-- Merge Henroth's "Customisation of Aircraft" feature.
+- Gameplay: Merge Henroth's "Customisation of Aircraft" feature. x
+- Balance: Move Gorgon to LF, re-factor price
+- Clean up the scroll list menu - group items/assign hotkeys?
